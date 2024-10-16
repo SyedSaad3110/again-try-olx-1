@@ -1,0 +1,44 @@
+.login-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: aqua;
+}
+.login-box{
+    position: relative;
+    top: 78px;
+    height: 490px;
+    width: 430px;
+    background-color: white;
+    border-radius: 2px;
+}
+.login-name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+.login-name h3{
+    font-weight: 620;
+    font-size: 24px;
+}
+form{
+    padding: 40px;
+}
+.input-box{
+    display: flex;
+    gap: 18px;
+    padding: 0px 16px;
+}
+.login-set{
+font-size: 18px;
+color: red;
+cursor: pointer;
+}
+.sinup{
+    cursor: pointer;
+    color: red;
+    font-size: 18px;
+    font-weight: 600;
+}
