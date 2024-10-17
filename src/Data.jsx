@@ -149,7 +149,7 @@ import animalImg4 from './assets/images/animal4.jpg';
         {
             img : mobImg2,
            price : "Rs 60,999",
-           text : "iPhone 12 pro Water Pack stock Dual Approved",
+           text : "iPhone 12 pro Water Dual Approved",
            country : "Chungi no 1 Multan",
            time : "2 day ago",
            id:6,
@@ -168,7 +168,7 @@ import animalImg4 from './assets/images/animal4.jpg';
         {
             img : mobImg4,
            price : "Rs 22,999",
-           text : "Vivo A/36 Dual Approved on Easy install",
+           text : "Vivo A/36  on Easy install",
            country : "Jinhaa Town Karachi",
            time : "3 week ago",
            id:8,
@@ -177,7 +177,7 @@ import animalImg4 from './assets/images/animal4.jpg';
         {
            img : bikeImg1,
            price : "Rs 91,600",
-           text : "ybr 125 g red grey color Bikes | ybr bikes",
+           text : "ybr 125 g Bikes | ybr bikes",
            country : "Baharia Town, Multan Pakistan",
            time : "7 hour ago",
            id:1,
@@ -186,7 +186,7 @@ import animalImg4 from './assets/images/animal4.jpg';
         {
             img : bikeImg2,
            price : "Rs 60,999",
-           text : "Suzuki 125 gray color For Sale 15% OFF...",
+           text : "Suzuki 125  For Sale 15% OFF",
            country : "Lahore new Lahore ",
            time : "4 day ago",
            id:2,
@@ -195,7 +195,7 @@ import animalImg4 from './assets/images/animal4.jpg';
         {
             img : bikeImg3,
            price : "Rs 77,000",
-           text : "Suzuki GS 150 SE For Sale | Suzuki Bike | Bikes",
+           text : "Suzuki GS 150 Sale | Suzuki Bike",
            country : "Neka pura | Karachi",
            time : "6 week ago",
            id:3,
@@ -205,7 +205,7 @@ import animalImg4 from './assets/images/animal4.jpg';
         {
             img : bikeImg4,
            price : "Rs 82,999",
-           text : "LIFAN SS3 (LF175-10M) Bike For Sale 20% OFF",
+           text : "LIFAN SS3  Bike For Sale 20% OFF",
            country : "Jinhaa Town Karachi",
            time : "9 week ago",
            id:4,
@@ -241,7 +241,7 @@ import animalImg4 from './assets/images/animal4.jpg';
          {
              img : watchImg4,
             price : "Rs 82,999",
-            text : "LIFAN SS3 (LF175-10M) watch For Sale 20% OFF",
+            text : "LIFA SS3 (L1-0M) watch For Sale",
             country : "Jinhaa Town Karachi",
             time : "9 week ago",
             id:12,
@@ -250,7 +250,7 @@ import animalImg4 from './assets/images/animal4.jpg';
          {
              img : carImg1,
              price : "Rs 9,600",
-             text : "cars 8/256 on Easy install",
+             text : "cars 8/256 on Easy install way",
              country : "Muslim Town Lahore",
              time : "1 hour ago",
              id:13,
@@ -268,7 +268,7 @@ import animalImg4 from './assets/images/animal4.jpg';
           {
               img : carImg3,
              price : "Rs 7,000",
-             text : "cars Approved Officialy",
+             text : "cars Approved Officialy launh",
              country : "Airport Road near pul-wasil",
              time : "1 week ago",
              id:15,
@@ -287,7 +287,7 @@ import animalImg4 from './assets/images/animal4.jpg';
           {
             img : fashionImg1,
            price : "Rs 60,39",
-           text : "pakistan styled new  Pack stock Dual Approved",
+           text : "pakistan styled new  Pack new",
            country : "Chungi no 1 Multan",
            time : "2 day ago",
            id:17,
@@ -306,7 +306,7 @@ import animalImg4 from './assets/images/animal4.jpg';
         {
             img : fashionImg3,
            price : "Rs 22,79",
-           text : "fashion ha bhai Dual Approved on Easy install",
+           text : "fashion  Dual Approved on Easy way",
            country : "Jinhaa Town Karachi",
            time : "3 week ago",
            id:19,
@@ -315,7 +315,7 @@ import animalImg4 from './assets/images/animal4.jpg';
         {
             img : fashionImg4,
            price : "Rs 60,99",
-           text : "fashion new styled Pack stock Dual Approved",
+           text : "fashion new Pack stock Dual ",
            country : "Chungi no 1 Multan",
            time : "2 day ago",
            id:20,
@@ -324,7 +324,7 @@ import animalImg4 from './assets/images/animal4.jpg';
         {
             img : animalImg1,
            price : "Rs 70,000",
-           text : "supered animal Approved Officialy",
+           text : "supered animal Approved ha",
            country : "Airport Road near pul-wasil",
            time : "1 week ago",
            id:21,
@@ -334,7 +334,7 @@ import animalImg4 from './assets/images/animal4.jpg';
         {
             img : animalImg2,
            price : "Rs 22,999",
-           text : "animals Dual Approved on Easy way",
+           text : "animals Dual Approved on every",
            country : "Jinhaa Town Karachi",
            time : "3 week ago",
            id:22,
@@ -343,7 +343,7 @@ import animalImg4 from './assets/images/animal4.jpg';
           {
         img : animalImg3,
        price : "Rs 60,999",
-       text : "new trend animal stock Dual Approved",
+       text : "new trend animal stock ",
        country : "Chungi no 1 Multan",
        time : "2 day ago",
        id:23,

@@ -436,5 +436,11 @@ width:100%;
         display:none;
         border:none;
     }
+    
+    }
+    @media(max-width:930px){
+      .sec_container{
+         gap:10px;
+      }
     }
     `

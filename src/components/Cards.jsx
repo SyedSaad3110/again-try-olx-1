@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { NavLink, useParams } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { Context } from '../Context'
 import Items from './Items';
 // import { allData } from '../AllData';
@@ -66,15 +66,19 @@ const CardsSection = styled.section`
     color:blue;
 }
 .cards_container{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  display: flex;
+  overflow-x: auto;
+  /* grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); */
   gap:1.5rem;
   padding:20px 0;
+  scroll-snap-type: x mandatory;
 }
   .cards_container .box{
     text-align:center;
     border: 1px solid #222 ;
     padding: 0px;
+    flex: 0 0 auto; /* Prevent cards from shrinking */
+    scroll-snap-align: start;
   }
 .images img {
     width:100%;
@@ -129,14 +133,14 @@ const CardsSection = styled.section`
    padding-right:20px;
    padding-bottom:20px;
 }
-@media(max-width:500px){
+/* @media(max-width:500px){
     .cards_container{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   gap:1.1rem;
   padding:16px 0;
 }
-}
+} */
 
 
 

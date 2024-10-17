@@ -43,10 +43,6 @@ text-decoration:none;
   align-items:center;
   gap:35px;
   padding:18px 26px 10px 10px;
-  /* margin-top:26px; */
-  /* padding-top:18px;
-  padding-right:10px;
-  padding-left:10px; */
 
 }
 .content{

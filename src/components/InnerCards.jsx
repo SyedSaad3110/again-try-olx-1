@@ -47,9 +47,7 @@ function InnerCards({img , id , price, country , text , time , cate}) {
                <i class="fa-solid fa-location-dot" ></i>
                <p>{country}</p>
                </div>
-            </div>
-
-            
+            </div>   
         </div>
 
 
@@ -132,8 +130,6 @@ function InnerCards({img , id , price, country , text , time , cate}) {
         </div>
        </div>
 
-       
-
     </div>
     
     </InnerCardSection>
@@ -149,17 +145,18 @@ const InnerCardSection = styled.div`
   gap:10px;
   max-width:1000px;
   margin-top: 110px;
-  
 }
 .inner_cards{
 background-color: black;
 display:flex;
 align-items:center;
 justify-content: center;
+width:100%;
 }
 .inner_cards_container,.thrd_container,.four_container{
   border:2px solid #222;
   padding:14px 13px;
+  width:100%;
 }
 .inner_cards img{
   height:550px;
@@ -352,6 +349,30 @@ color:#222;
 }
 .location_context p {
   margin-top: 14px;
+}
+@media(max-width:1515px){
+  .left_container{
+    display: none;
+  }
+  .inner_cards img{
+  height:500px;
+}
+}
+@media(max-width:1315px){
+  .inner_cards img{
+  height:400px;
+}
+}
+@media(max-width:1015px){
+  .inner_cards img{
+  height:300px;
+}
+}
+@media(max-width:915px){
+  .inner_cards img{
+  height:250px;
+
+}
 }
 
   

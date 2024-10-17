@@ -162,6 +162,8 @@ image img{
   width:100%;
   height:194px;
   display:flex;
+  overflow-x: auto; 
+  scroll-snap-type: x mandatory;
   align-items:center;
   justify-content:space-between;
   background-color: #f1e6e6;
@@ -273,6 +275,11 @@ li ,a:hover{
    width:75px;
    height:70px;
    white-space: nowrap;
+}
+}
+@media(max-width:510px){
+  .footer_container{
+     padding: 12px 32px 0px 0px;
 }
 }
 

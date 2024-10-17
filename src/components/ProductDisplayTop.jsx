@@ -1,6 +1,7 @@
 import React from 'react';
 import './ProductDisplayTop.css'
 import ProductDisplay from './ProductDisplay';
+import { NavLink } from 'react-router-dom';
 
 function ProductDisplayTop() {
   return (
@@ -10,7 +11,7 @@ function ProductDisplayTop() {
     </div>
     <div className="main-container">
         <div className="left-container">
-            <div className="name">Home</div>
+            <NavLink to="" style={{textDecoration:"none"}}><div className="name">Home</div></NavLink>
             <div className="details">
                 <h5>Mobiles in Pakistan</h5>
                 <p>10,000+ ads</p>

@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Product from './Product'
 import { NavLink } from 'react-router-dom'
 
 function ProductDisplay({id , img , country , price , text ,time, cate}) {
@@ -44,4 +43,15 @@ const ProductDisplaySection = styled.section`
     width:400px;
     height:300px;
 }
+@media(max-width:604px) {
+  .card-container{
+    display: none;
+  }
+  .card-box{
+    border: none;
+  }
+}
+/* .card-box{
+  width:100%;
+} */
 `

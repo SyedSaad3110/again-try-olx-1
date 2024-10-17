@@ -34,10 +34,6 @@ function App() {
         ),
       },
       {
-        path:"",
-        element:<Cards/>
-      },
-      {
         path:"/product/:productId",
         element:<Product/>
       },
