@@ -350,7 +350,7 @@ color:#222;
 .location_context p {
   margin-top: 14px;
 }
-@media(max-width:1515px){
+@media(max-width:1315px){
   .left_container{
     display: none;
   }
