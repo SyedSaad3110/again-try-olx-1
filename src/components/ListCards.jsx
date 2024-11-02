@@ -5,7 +5,7 @@ import './ListingCards.css'
 function ListCards({items}) {
   return (
     <>
-    <section>
+    {/* <section> */}
       <div className="card-container">
                       <div className="img">
                        {items.imageURLs && items.imageURLs.length > 0 ? (
@@ -45,7 +45,7 @@ function ListCards({items}) {
                  {/* </div> */}
 
         </div>
-        </section>
+        {/* </section> */}
     </>
   )
 }
