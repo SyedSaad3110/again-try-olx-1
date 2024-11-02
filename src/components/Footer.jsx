@@ -1,8 +1,25 @@
-import React from 'react'
+import React, { useState , useEffect} from 'react'
 import styled from 'styled-components'
+import FooterAccordion from './FooterAccordion'
 // import FooterContext from './FooterContext'
 
 function Footer() {
+  const [isAccordionVisible, setIsAccordionVisible] = useState(window.innerWidth <= 700);
+
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsAccordionVisible(window.innerWidth <= 700);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);  
+
+
   return (
    <ImageSection>
     <section>
@@ -26,7 +43,10 @@ function Footer() {
      <span className='span_tag'><img src="https://www.olx.com.pk/assets/iconGooglePlayEN_noinline.9892833785b26dd5896b7c70b089f684.svg" alt="" />      <img src="https://www.olx.com.pk/assets/iconAppGallery_noinline.6092a9d739c77147c884f1f7ab3f1771.svg" alt="" /></span>
     </div>
    </div>
-       <div className="footer_container">
+
+       {
+        isAccordionVisible ? <FooterAccordion/> :
+        <div className="footer_container">
         <div className="footer_content">
           <a href="#"><h5>Popular Categories</h5></a>
           <a href="#" className='context'>
@@ -89,6 +109,9 @@ function Footer() {
           </a>
         </div>
       </div> 
+       }
+
+
 
        <div className="copy_right">
         <div className="p_tag">
@@ -105,6 +128,7 @@ function Footer() {
 export default Footer
 
 const ImageSection = styled.div`
+
 .image{
     padding-top:28px;
     padding-bottom:7px;
@@ -162,8 +186,8 @@ image img{
   width:100%;
   height:194px;
   display:flex;
-  overflow-x: auto; 
-  scroll-snap-type: x mandatory;
+  /* overflow-x: auto; 
+  scroll-snap-type: x mandatory; */
   align-items:center;
   justify-content:space-between;
   background-color: #f1e6e6;
@@ -175,14 +199,17 @@ image img{
   align-items:center;
   flex-direction:column;
 } 
-.footer_content a{
-  list-style-type: none;
-  text-decoration:none;
-}
 .footer_content a h5{
   color:#222;
   font-weight:520;
-  padding-bottom: 14px;;
+  padding-bottom: 14px;
+  list-style-type: none;
+  text-decoration: none;
+}
+a{
+  list-style-type: none;
+  text-decoration: none;
+  color:#7e7575;
 }
 li , a{
   color:#7e7575;
@@ -281,6 +308,12 @@ li ,a:hover{
   .footer_container{
      padding: 12px 32px 0px 0px;
 }
+}
+@media(max-width:615px){
+  .apps_store{
+    display:flex;
+    text-align: end;
+  }
 }
 
 `

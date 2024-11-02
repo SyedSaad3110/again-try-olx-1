@@ -21,13 +21,8 @@ section{
   max-width: 1600px;
   padding: 10px 30px;
   width: 100%;
+  margin: 0 auto;
   /* min-height: 100vh; */
-}
-header{
-  max-width: 1600px;
-  padding: 10px 30px;
-  width: 100%;
-  min-height: 10vh;
 }
 .a_logos{
   list-style: none;

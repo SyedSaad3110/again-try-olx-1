@@ -5,10 +5,11 @@ import CarouselPage from './CarouselPage'
 function Categories() {
   return (
     <CategoriesSection>
+      <section>
         <div>
             <div className="line">
             </div>
-            <section>
+            {/* <section> */}
              <div className="categories_container">
              <div className="name">
               All categories
@@ -47,9 +48,10 @@ function Categories() {
               </div>
              </div>
              <CarouselPage/>
-           </section>
+           {/* </section> */}
   
         </div>
+        </section>
    
    </CategoriesSection>
   )
@@ -58,12 +60,13 @@ function Categories() {
 export default Categories
 
 const CategoriesSection = styled.div`
-margin-top:110px;
+/* margin-top:110px; */
 .line{
     height:1px;
     width:100%;
-color:#302f2f;
-background-color:black;
+    color:#302f2f;
+    background-color:black;
+    margin-top: -28px;
 }
 .categories_container{
   display:flex;
@@ -92,9 +95,14 @@ background-color:black;
 @media(max-width:2300px){
   margin-top:174px;
 }
-@media(max-width:600px){
+@media(max-width:760px){
   .categories_container{
     display:none;
   }
-}
+ }
+ @media(max-width:525px){
+  .line{
+    margin-top:-29px;
+  }
+ }
 `

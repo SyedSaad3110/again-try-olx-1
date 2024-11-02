@@ -348,8 +348,9 @@ const allData =  [
        cate:"animals",
 
     },
-  ]
 
+  ]
+  
   export {allData}
 
 

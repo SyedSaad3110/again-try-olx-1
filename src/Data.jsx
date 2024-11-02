@@ -64,71 +64,93 @@ import animalImg4 from './assets/images/animal4.jpg';
         img : cateImg1,
         name : "Mobiles",
         cate:"mobiles",
+        id:1,
     },
     {
         img : cateImg2,
         name : "Vehicles",
         cate:"cars",
+        id:2,
     },
     {
         img : cateImg3,
         name : "Property For Sale",
         cate:"cars",
+        id:3,
     },
     {
         img : cateImg4,
         name : "Property For Rent",
         cate:"mobiles",
+        id:4,
     },
     {
         img : cateImg5,
         name : "Electronic & Home Appliances",
         cate:"mobiles",
+        id:5,
     },
     {
         img : cateImg6,
         name : "Bikes",
         cate:"bikes",
+        id:6,
      },
     {
         img : cateImg7,
         name : "Businees Industrial & Agriculture",
         cate:"cars",
+        id:7,
+
     },
     {
         img : cateImg8,
         name : "Services",
         cate:"watches",
+        id:8,
+
     },
     {
         img : cateImg9,
         name : "Jobs",
         cate:"mobiles",
+        id:9,
+
     },
     {
         img : cateImg10,
         name : "Animals",
         cate:"animals",
+        id:10,
+
     },
     {
         img : cateImg11,
         name : "Furniture & Home Decor",
         cate:"bikes",
+        id:11,
+
     },
     {
         img : cateImg12,
         name : "Fashion & Beauty",
         cate:"fashion",
+        id:12,
+
     },
     {
         img : cateImg13,
         name : "Books Sport & Hobbies",
         cate:"cars",
+        id:13,
+
     },
     {
         img : cateImg14,
         name : "Kids",
         cate:"mobiles",
+        id:14,
+
     },
 
 
@@ -186,7 +208,7 @@ import animalImg4 from './assets/images/animal4.jpg';
         {
             img : bikeImg2,
            price : "Rs 60,999",
-           text : "Suzuki 125  For Sale 15% OFF",
+           text : "Suzuki 125  For Sale 15% OFF everyone",
            country : "Lahore new Lahore ",
            time : "4 day ago",
            id:2,
@@ -195,7 +217,7 @@ import animalImg4 from './assets/images/animal4.jpg';
         {
             img : bikeImg3,
            price : "Rs 77,000",
-           text : "Suzuki GS 150 Sale | Suzuki Bike",
+           text : "Suzuki GS 150 Sale | Suzuki Bike ",
            country : "Neka pura | Karachi",
            time : "6 week ago",
            id:3,
@@ -296,7 +318,7 @@ import animalImg4 from './assets/images/animal4.jpg';
         {
             img : fashionImg2,
            price : "Rs 7,00",
-           text : "india styeld Approved Officialy",
+           text : "india styeld Approved Officialy pack",
            country : "Airport Road near pul-wasil",
            time : "1 week ago",
            id:18,
@@ -315,7 +337,7 @@ import animalImg4 from './assets/images/animal4.jpg';
         {
             img : fashionImg4,
            price : "Rs 60,99",
-           text : "fashion new Pack stock Dual ",
+           text : "fashion new Pack stock Dual new style ",
            country : "Chungi no 1 Multan",
            time : "2 day ago",
            id:20,
@@ -324,7 +346,7 @@ import animalImg4 from './assets/images/animal4.jpg';
         {
             img : animalImg1,
            price : "Rs 70,000",
-           text : "supered animal Approved ha",
+           text : "supered animal Approved ha bhai",
            country : "Airport Road near pul-wasil",
            time : "1 week ago",
            id:21,
@@ -334,7 +356,7 @@ import animalImg4 from './assets/images/animal4.jpg';
         {
             img : animalImg2,
            price : "Rs 22,999",
-           text : "animals Dual Approved on every",
+           text : "animals Dual Approved on every one",
            country : "Jinhaa Town Karachi",
            time : "3 week ago",
            id:22,
@@ -343,7 +365,7 @@ import animalImg4 from './assets/images/animal4.jpg';
           {
         img : animalImg3,
        price : "Rs 60,999",
-       text : "new trend animal stock ",
+       text : "new trend animal stock trend new ",
        country : "Chungi no 1 Multan",
        time : "2 day ago",
        id:23,

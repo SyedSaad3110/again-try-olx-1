@@ -23,7 +23,7 @@ function InnerCards({img , id , price, country , text , time , cate}) {
              
             <div className="box_button_container">
             <div className="box_btn">
-                  <div className="btn">
+                  <div className="btn_first">
                   <i class="fa-solid fa-phone"></i>
                   <a href="#">Show Phone Number</a>
                     <a href="#"></a>
@@ -138,13 +138,14 @@ function InnerCards({img , id , price, country , text , time , cate}) {
 
 export default InnerCards
 
-const InnerCardSection = styled.div`
+const InnerCardSection = styled.section`
 .inner_container{
   display:flex;
   flex-direction: column;
   gap:10px;
-  max-width:1000px;
-  margin-top: 110px;
+  max-width:780px;
+  margin-top: 150px;
+  width:100%;
 }
 .inner_cards{
 background-color: black;
@@ -238,7 +239,7 @@ width:100%;
 .box{
   position:absolute;
   right:18px;
-  top:58px;
+  top:165px;
   min-width:470px;
   min-height: 280px;
   border-radius:4px;
@@ -283,16 +284,16 @@ width:100%;
   border:2px solid #222;
   border-radius: 4px;
 }
-.btn{
+.btn_first{
   display:flex;
   align-items: center;
    font-size:22px;
   gap:8px;
 }
-.btn i{
+.btn_first i{
 color:#fff;
 }
-.btn a{
+.btn_first a{
   color:#fff;
   text-decoration: none;
   font-size:18px;
@@ -331,7 +332,7 @@ color:#222;
 .box_location{
  position:absolute;
   right:18px;
-  top:360px;
+  top:460px;
   min-width:470px;
   min-height: 110px;
   border-radius:4px;
@@ -371,8 +372,18 @@ color:#222;
 @media(max-width:915px){
   .inner_cards img{
   height:250px;
-
 }
+}
+@media(max-width:455px){
+  .inner_cards img{
+  height:240px;
+}
+  .price h3{
+    font-size: 24px;
+  }
+  .text h4{
+    font-size: 17px;
+  }
 }
 
   

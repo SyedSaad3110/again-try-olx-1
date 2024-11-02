@@ -4,51 +4,67 @@ import { useState } from 'react';
 import { locationData } from '../Data';
 import { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useFirebase } from './Firebase/FirebaseContext';
 function Navbar() {
-
+    const firebase = useFirebase();
+    // ==========================
       const locationRef = useRef();
       const arrowRef = useRef();
+      const barRef = useRef();
 
-      const [handlerValue , setHandlerValue] = useState("")
-
-
+// ==============================================================
+      const [handlerValue , setHandlerValue] = useState("");
+//  bar active
+      const barActive = () => {
+        barRef.current.classList.toggle('active')
+      };
+//   bar remove
+      const barRemove = () => {
+        barRef.current.classList.remove('active')
+      }
+//  location active & remove
       const locationHandlerData = ()=>{
         locationRef.current.classList.toggle("active")
         arrowRef.current.classList.toggle("active")
-        
-      }
-
+      };
+//  handler change
         const handlerValueChange =(e)=>{
              setHandlerValue(e)
-        }
+        };
+        
+// ====================================================
 
   return (
 
     <NavbarSection>
+        <div className="nav_container">
     <div className="header_container">
+        <div className="bar">
+        <i onClick={barActive} class="fa-solid fa-bars"></i>
+        </div>
+
     <div className="logo_name">
-        <NavLink to="/"><h2>O<span>|</span>X</h2></NavLink>
+        <NavLink to="/" onClick={barRemove && window.scrollTo(0,0)}><h2>O<span>|</span>X</h2></NavLink>
     </div>
 
     <div className="motors">
         <div className="motors_logo">
-        <i class="fa-solid fa-car"></i>
+        <NavLink to='/sell' style={{textDecoration:'none'}}><i class="fa-solid fa-car"></i></NavLink>
         </div>
         <div className="name">
-            <a className='a_logos' href="#"><h4>Motors</h4></a>
+            <NavLink to='/sell' style={{textDecoration:'none'}} onClick={barRemove}><a className='a_logos' href="#"><h4>Sell</h4></a></NavLink>
         </div>
     </div>
 
     <div className="property">
         <div className="property_logo">
-        <i class="fa-regular fa-building"></i>
+       <NavLink  to='/sellinglist' style={{textDecoration:'none'}} ><i class="fa-regular fa-building"></i></NavLink>
         </div>
         <div className="name">
-            <a className='a_logos' href="#"><h4>Property</h4></a>
+           <NavLink to='/sellinglist' style={{textDecoration:'none'}} ><a className='a_logos' href="#"><h4>Sell Product</h4></a></NavLink>
         </div>
     </div>
     </div>
-
 
       <div className="sec_container" >
         <div className="location_placeholder">
@@ -95,15 +111,13 @@ function Navbar() {
         </div>
         <div className="search_placeholder">
             <input
-             
              type="text"
              placeholder="Find Cars , Mobile Phones and more..."
-
                 />
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
         <div className="login_name">
-            <NavLink to="/login" style={{textDecoration:"none"}}><a className='a_logos' href="#"><h4>Login</h4></a></NavLink>
+            <a className='a_logos' onClick={firebase.logout}><h4>Logout</h4></a>
 
         </div>
         <div className="sell_container">
@@ -111,12 +125,53 @@ function Navbar() {
             <i class="fa-solid fa-plus"></i>
             </div>
             <div className="sell_name">
-                <a className='a_logos'  href="#">Sell</a>
+              <NavLink style={{textDecoration:'none'}} to='/sell'><a className='a_logos'  to='/sell'>Sell</a></NavLink>
             </div>
         </div>
         <div>
         </div>
         {/* <CarouselPage/> */}
+        
+    <div className="bar-container" ref={barRef}>
+       <div className="top-content">
+        <img src="https://www.olx.com.pk/assets/iconProfilePicture.7975761176487dc62e25536d9a36a61d.png" alt="" />
+        <div className="top-content-name">
+        <p>Hello,</p>
+        <h5>User</h5>
+        </div>
+       </div>
+
+       <hr />
+
+       <div className="bar_first_box">
+        <div className="bar_content">
+        <NavLink to='/sell' style={{textDecoration:'none', color:'black'}} onClick={barRemove}><i class="fa-solid fa-camera"></i></NavLink>
+        <NavLink to='/sell' style={{textDecoration:'none', color:'black'}} onClick={barRemove}><p>Start Selling</p></NavLink>
+        </div>
+        <div className="bar_content">
+        <i onClick={barRemove} class="fa-regular fa-heart"></i>
+        <p onClick={barRemove}>Favourites & Saved</p>
+        </div>
+        <div className="bar_content">
+        <NavLink to='/sellinglist' style={{textDecoration:'none', color:'black'}} onClick={barRemove}><i class="fa-regular fa-eye"></i></NavLink>
+        <NavLink to='/sellinglist' style={{textDecoration:'none', color:'black'}} onClick={barRemove}><p>Selling Products</p></NavLink>
+        </div>
+        <div className="bar_content">
+        <a href="https://help.olx.com.pk/hc/en-us" style={{color:'black'}}><i onClick={barRemove} class="fa-regular fa-circle-question"></i></a>
+        <a href="https://help.olx.com.pk/hc/en-us" style={{color:'black' , textDecoration:'none'}}><p onClick={barRemove}>Help</p></a>
+        </div>
+        <div className="bar_content">
+        <i onClick={barRemove} class="fa-solid fa-sliders"></i>
+        <p onClick={barRemove}>Setting</p>
+        </div>
+        <div className="bar_content">
+        <i onClick={firebase.logout} class="fa-solid fa-right-from-bracket"></i>
+        <p onClick={firebase.logout}>Logout</p>
+        </div>
+       </div>
+    </div>
+
+</div>
 </div>
 
     </NavbarSection>
@@ -125,14 +180,75 @@ function Navbar() {
 
 export default Navbar
 
-const NavbarSection = styled.header`
-position: fixed;
-top:0;
-right:auto;
-left:auto;
-z-index:1001;
-background-color: #fff;
-width:100%;
+const NavbarSection = styled.section`
+.bar i{
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 4px;
+}
+.bar{
+    display:none;
+}
+.bar-container.active{
+   left:0;
+   transition: 0.5s ease-in-out linear;
+}
+.bar-container{
+    width: 100%;
+    height: 900px;
+    position: absolute;
+    background-color: #fff;
+    top: 70px; 
+    left:-650px;
+    transition: 0.9s ease-in;
+    visibility: hidden;
+}
+.top-content{
+    display: flex;
+    align-items: center;
+    gap:22px;
+    /* width:100%; */
+    padding:16px;
+}
+.top-content-name p{
+    color:black;
+    font-weight:390;
+}
+.top-content-name h5{
+    color:black;
+    font-size:18px;
+    font-weight:520;
+    margin-top:-15px
+}
+.bar_content{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:10px 24px;
+}
+.bar_content p{
+    margin-top:15px;
+    font-weight:400;
+}
+/* ============================================ */
+
+.top-content img{
+    height: 60px;
+    width:60px;
+    border-radius:50%;
+}
+.nav_container{
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1001;
+    background-color: #fff;
+    width:100%;
+    max-width:1540px;
+    margin:0 auto;
+    padding:10px 20px;
+}
 .header_container{
     max-width:420px;
     width:100%;
@@ -141,7 +257,9 @@ width:100%;
     justify-content: space-between;
     gap:14px;
     padding:4px 8px;
-    
+}
+.logo_name{
+    margin-top:8px;
 }
     .logo_name a{
         color:#222;
@@ -168,13 +286,14 @@ width:100%;
         display:flex;
         align-items: center;
         justify-content:center;
+        font-weight:400;
     }
    .motors:hover{
        color:blue
    }
     .name h4{
         font-size:20px;
-        font-weight: 600;
+        font-weight: 460;
     }
     .sec_container{
         display:flex;
@@ -182,22 +301,21 @@ width:100%;
         gap:30px;
         padding: 20px 4px;
         width:100%;
-        /* min-width:1600px; */
+        margin:0 auto;
     }
     .location_placeholder, .search_placeholder {
         position:relative;
-    }
-    .location_placeholder input::placeholder{
-        padding:26px;
-        font-size:18px;
+        /* width:100%; */
     }
     .location_placeholder input{
         font-size:22px;
         border:2px solid black;
-        border-radius: 2.5px;
-        padding:7px 4px;
-        /* width:100%; */
-        min-width:110px;
+        border-radius: 3px;
+        padding:7px 44px;
+        max-width:100%;
+        /* min-width:110px; */
+        width:300px;
+        font-weight: 380;
     }
     .location_placeholder label{
         font-size: 18px;
@@ -209,8 +327,6 @@ width:100%;
     .location_placeholder i{
        font-size:18px;
        cursor: pointer;
-       
-
     }
     .arrow i{
       position:absolute;
@@ -222,14 +338,17 @@ width:100%;
     .search_placeholder input{
         font-size:22px;
         border:2px solid black;
-        border-radius: 2.5px;
-        padding:7px 4px;
+        border-radius: 3px;
+        padding:7px 14px;
+        padding-right:44px;
         width:880px;
         max-width:100%;
+        font-weight: 380;
+        overflow: hidden;
     }
     .search_placeholder input::placeholder{
-        padding:12px;
-        font-size:18px;
+        overflow: hidden;
+        z-index: 1000;
     }
     .search_placeholder i{
         position:absolute;
@@ -272,11 +391,11 @@ width:100%;
     .location_handler{
         position: absolute;
         top:50px;
-        background-color: white;
+        background-color: #fff;
         color:#222;
         border:2px solid #222;
         border-radius:4px;
-        min-width:279px;
+        min-width:300px;
         min-height:337px;
         overflow-y: auto;
         max-height:100%;
@@ -320,7 +439,7 @@ width:100%;
         border-bottom: 1.6px solid #707070;
     }
     .ads_location i{
-        font-size:24px;
+        font-size:20px;
         color:#363636;
     }
     .ads_location h5{
@@ -352,39 +471,6 @@ width:100%;
         padding:12px 16px;;
 
     }
-   /* .login_container{
-    }
-    .login_page{
-        position:absolute;
-        top:110px;
-        left:35%;
-        background-color: red;
-        height:600px;
-        width:100%;
-        max-width:430px;
-        display:flex;
-        /* align-items:center; 
-    }
-    .login_page i{
-        height: 80px;
-        position:absolute;
-        top:58px;
-        right:15px;
-        font-size:24px;
-     }
-    .logo_name a{
-        position:absolute;
-        top:90px;
-        left:42%;
-    }
-    .logo_name h6{
-        position:absolute;
-        top:150px;
-        left:18%;
-        font-size:21px;
-        font-weight:800;
-        white-space:nowrap;
-    } */
 
 
     @media(max-width:1449px){
@@ -427,20 +513,44 @@ width:100%;
     }
     @media(max-width:800px){
         .header_container{
-    max-width:370px;
-    width:100%;
-    gap:9px;
-    padding:2px 3px;
+       max-width:370px;
+       width:100%;
+       gap:9px;
+       padding:2px 3px;
       }
-      .sell_container{
-        display:none;
-        border:none;
-    }
-    
     }
     @media(max-width:930px){
       .sec_container{
          gap:10px;
       }
+    }
+    @media(max-width:482px){
+        .bar{
+          display:block;
+         }
+         .login_name{
+            display:none;
+         }
+         .bar-container{
+         visibility: visible;
+         }
+         .sell_container{
+            display:none;
+         } 
+         .sec_container{
+        display:flex;
+        justify-content:center;
+        text-align:center;
+    }
+    }
+    /* @media(max-width:470px){
+          /* .sell_container{
+            display:none;
+         } 
+    } */
+    @media(max-width:442px){
+        .property{
+            display:none;
+        }
     }
     `

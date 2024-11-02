@@ -7,8 +7,7 @@ import styled from 'styled-components';
 function CarouselPage() {
   return (
 <CarouselSection>
-  {/* <section> */}
-  <div>
+  <div className='carouselpage'>
 <Carousel data-bs-theme="dark">
       <Carousel.Item>
         <img
@@ -26,7 +25,6 @@ function CarouselPage() {
       </Carousel.Item>
     </Carousel>
 </div>
-  {/* </section> */}
 </CarouselSection>
 
   )
@@ -36,12 +34,18 @@ export default CarouselPage
 
 const CarouselSection = styled.div`
  img{
-    // height:calc(100vh - 70px); 
     height: 250px;
     width:100%;
     object-fit: cover;
     position:relative;
-    top:20px;
-
+    top:25px;
  }
+ @media(max-width:760px){
+  img{
+    object-position: 6%;
+    object-fit:none;
+    margin-top:-35px;
+  }
+ }
+ 
 `
