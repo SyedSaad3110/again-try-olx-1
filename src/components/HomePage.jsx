@@ -42,7 +42,7 @@ function HomePage(props) {
 }
 
 export default HomePage
-const HomePageSection = styled.section`
+const HomePageSection = styled.div`
     .home_page{
         padding-top: 180px;
     }

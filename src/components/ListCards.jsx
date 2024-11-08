@@ -5,7 +5,6 @@ import './ListingCards.css'
 function ListCards({items}) {
   return (
     <>
-    {/* <section> */}
       <div className="card-container">
                       <div className="img">
                        {items.imageURLs && items.imageURLs.length > 0 ? (
@@ -39,13 +38,8 @@ function ListCards({items}) {
                       </div>
                      </div>
                       </div>
-                     {/* <div className="heart">
-                     <i class="fa-regular fa-heart"></i>
-                     </div> */}
-                 {/* </div> */}
 
         </div>
-        {/* </section> */}
     </>
   )
 }

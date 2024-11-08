@@ -161,6 +161,9 @@ width:100%;
 }
 .inner_cards img{
   height:550px;
+  object-fit: cover;
+  width: 100%;
+  object-position: 35%;
 }
 .sec_container{
   display:flex;
