@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
 import { locationData } from '../Data';
 import { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useFirebase } from './Firebase/FirebaseContext';
-function Navbar() {
+
+
+
+function Navbar({searchCate, search, setSearch}) {
     const firebase = useFirebase();
     // ==========================
       const locationRef = useRef();
@@ -27,10 +30,15 @@ function Navbar() {
         locationRef.current.classList.toggle("active")
         arrowRef.current.classList.toggle("active")
       };
+      const locationHandlerRemove = () => {
+        locationRef.current.classList.remove("active")
+      }
 //  handler change
         const handlerValueChange =(e)=>{
              setHandlerValue(e)
         };
+        
+        
         
 // ====================================================
 
@@ -53,6 +61,15 @@ function Navbar() {
         </div>
         <div className="name">
             <NavLink to='/sell' style={{textDecoration:'none'}} onClick={barRemove}><a className='a_logos' href="#"><h4>Sell</h4></a></NavLink>
+        </div>
+    </div>
+
+    <div className="motors favt">
+        <div className="motors_logo">
+        <NavLink to='/favorites' style={{textDecoration:'none'}}><i class="fa-regular fa-heart"></i></NavLink>
+        </div>
+        <div className="name">
+            <NavLink to='/favorites' style={{textDecoration:'none'}} onClick={barRemove}><a className='a_logos' href="#"><h4>favorites</h4></a></NavLink>
         </div>
     </div>
 
@@ -88,7 +105,7 @@ function Navbar() {
             <div className="all_location">
                 {locationData.map((items, value)=>{
                     return <div className="ads_locations" key={value}>
-                        <i class="fa-solid fa-location-dot"></i>
+                        <i class="fa-solid fa-location-dot" ></i>
                         <h5 onClick={()=> handlerValueChange(items.name)}>{items.name}</h5>
                     </div>
                 })}
@@ -113,6 +130,8 @@ function Navbar() {
             <input
              type="text"
              placeholder="Find Cars , Mobile Phones and more..."
+             onChange={(e)=> setSearch(e.target.value)}
+             value={search}
                 />
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
@@ -137,7 +156,7 @@ function Navbar() {
         <img src="https://www.olx.com.pk/assets/iconProfilePicture.7975761176487dc62e25536d9a36a61d.png" alt="" />
         <div className="top-content-name">
         <p>Hello,</p>
-        <h5>User</h5>
+        <h5>{firebase.user.displayName || "User"}</h5>
         </div>
        </div>
 
@@ -149,8 +168,8 @@ function Navbar() {
         <NavLink to='/sell' style={{textDecoration:'none', color:'black'}} onClick={barRemove}><p>Start Selling</p></NavLink>
         </div>
         <div className="bar_content">
-        <i onClick={barRemove} class="fa-regular fa-heart"></i>
-        <p onClick={barRemove}>Favourites & Saved</p>
+        <NavLink to="/favorites" style={{textDecoration:'none', color:'black'}} onClick={barRemove}><i  class="fa-regular fa-heart"></i></NavLink>
+        <NavLink to="/favorites" style={{textDecoration:'none', color:'black'}} onClick={barRemove}><p>Favourites & Saved</p></NavLink>
         </div>
         <div className="bar_content">
         <NavLink to='/sellinglist' style={{textDecoration:'none', color:'black'}} onClick={barRemove}><i class="fa-regular fa-eye"></i></NavLink>
@@ -250,7 +269,7 @@ const NavbarSection = styled.section`
     padding:10px 20px;
 }
 .header_container{
-    max-width:420px;
+    max-width:590px;
     width:100%;
     display:flex;
     align-items:center;
@@ -513,7 +532,7 @@ const NavbarSection = styled.section`
     }
     @media(max-width:800px){
         .header_container{
-       max-width:370px;
+       max-width:520px;
        width:100%;
        gap:9px;
        padding:2px 3px;
@@ -524,9 +543,12 @@ const NavbarSection = styled.section`
          gap:10px;
       }
     }
-    @media(max-width:482px){
+    @media(max-width:500px){
         .bar{
           display:block;
+         }
+         .favt{
+            display: none;
          }
          .login_name{
             display:none;

@@ -154,6 +154,16 @@ h6{
 .left-arrow i{
     color: black;
 }
+.pointer{
+    display: flex;
+    justify-content: space-between;
+}
+.pointer p{
+    font-size: 12px;
+}
+.text-pointer{
+    margin-top: 7px;
+}
 /* ======================================= */
 .img-container {
     display: flex;

@@ -1,9 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
-import { getAuth , createUserWithEmailAndPassword , signInWithEmailAndPassword , GoogleAuthProvider, signInWithPopup, GithubAuthProvider,  onAuthStateChanged, signOut, sendPasswordResetEmail} from 'firebase/auth';
+import { getAuth , createUserWithEmailAndPassword , signInWithEmailAndPassword , GoogleAuthProvider, signInWithPopup, GithubAuthProvider,  onAuthStateChanged, signOut, sendPasswordResetEmail, updateProfile} from 'firebase/auth';
 import { getStorage , ref , uploadBytes, getDownloadURL} from 'firebase/storage'
 import { getFirestore , collection , addDoc, getDocs} from 'firebase/firestore';
 // import { getDatabase, set, ref} from "firebase/database";
+import { getMessaging } from "firebase/messaging";
 
 
 
@@ -29,35 +30,43 @@ export const useFirebase = () => useContext(FirebaseContext);
   const githubProvider = new GithubAuthProvider();
   const storage = getStorage(firebaseApp);
   const firestore = getFirestore(firebaseApp);
+//   const messaging = getMessaging(firebaseApp);
 //   const database = getDatabase(firebaseApp);
 
 //   =================================================
-
+export const messaging = getMessaging(firebaseApp);
 export const FirebaseProvider = (props) => {
 
     const [user, setUser] = useState(null);
     const [ error , setError] = useState('');
     const [ registerErr , setRegisterErr] = useState('');
-    const [msg, setMsg] = useState('Post Now')
-    // const [username, setUsername] = useState(null);
+    const [msg, setMsg] = useState('Post Now');
 
     
 
     useEffect(()=>{
         onAuthStateChanged(firebaseAuth , (user) =>{
             if(user){
-                setUser(user)
+                setUser(user);
             }else{
-                setUser(null)
+                setUser(null);
             }
+            
             
         })
     },[])
     // signup user
-    const signupUserWithEmail = async (email, password) => {
+    const signupUserWithEmail = async (email, username,  password) => {
         try {
-            await createUserWithEmailAndPassword(firebaseAuth , email , password);
-               setRegisterErr(`Register Succeess`);  
+            const userCredential = await createUserWithEmailAndPassword(firebaseAuth , email ,  password);
+            const user = userCredential.user;
+             // Update the profile with the display name
+          const res =  await updateProfile(user, {
+              displayName: username,
+           });
+
+          setRegisterErr("Register Success");
+        console.log("User display name set to:", username);
         } catch (error) {
             console.log(`Error Register ${error.message}`);
                setRegisterErr(`Register Failed`) 
@@ -218,7 +227,7 @@ export const FirebaseProvider = (props) => {
     //     }
 
     return(
-        <FirebaseContext.Provider value={{signupUserWithEmail, loginWithEmailAndPassword , siginWithGoogle, signinWithGithub , isLoggedIn, logout, forgetPassword, error, setError, setRegisterErr , registerErr, handlerCreateListing , msg, setMsg, listAllData, getImgUrl}}>
+        <FirebaseContext.Provider value={{signupUserWithEmail, loginWithEmailAndPassword , siginWithGoogle, signinWithGithub , isLoggedIn, logout, forgetPassword, error, setError, setRegisterErr , registerErr, handlerCreateListing , msg, setMsg, listAllData, getImgUrl, messaging, user}}>
             {props.children}
         </FirebaseContext.Provider>
     )

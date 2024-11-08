@@ -1,9 +1,24 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
-import { categories } from '../Data'
+// import { categories } from '../Data'
 import { NavLink } from 'react-router-dom'
 
-function Main() {
+function Main({allcate, search}) {
+
+  const [filteredCate, setFilteredCate] = useState(allcate);
+
+  useEffect(() => {
+    if (search) {
+      const filtered = allcate.filter(item =>
+        item.name.toLowerCase().includes(search.toLowerCase())
+      );
+      setFilteredCate(filtered);
+    } else {
+      setFilteredCate(allcate); 
+    }
+  }, [search, allcate]);
+
+
   return (
     <MainSection>
       <div className="main_container_section">
@@ -12,8 +27,8 @@ function Main() {
        </div>
         <div className="categories_container">
           {/* <div className="categories_box"> */}
-          {categories.map((items, value)=>{
-           return  <div className="content">
+          {filteredCate.map((items, value)=>(
+             <div className="content">
                   <div className="images" key={value}>
                     <NavLink to={`/product/${items.cate}`}><img src={items.img} alt="" /></NavLink>
                     <div className="context">
@@ -22,7 +37,7 @@ function Main() {
                   </div>
                  
              </div>
-          })}
+          ))}
           {/* </div> */}
         </div>
       </div>

@@ -6,12 +6,12 @@ import SellProductType from './SellProductType/SellProductType';
 function SellProductSelection() {
     const {sellproducttypeId} = useParams();
 // ============================================
-    const items = categories.find((items)=> items.id === Number(sellproducttypeId));
+   const items = categories.find((items)=> items.id === Number(sellproducttypeId));
   
   return (
     <>
    
-    <SellProductType img={items.img} name={items.name} />
+    <SellProductType img={items.img} name={items.name}/>
     </>
   )
 }

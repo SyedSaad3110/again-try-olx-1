@@ -21,24 +21,14 @@ function HomePage(props) {
         fetchListings();
     }, [listAllData]);
 
-    // useEffect(() => {
-    //     const fetchPosts = async () => {
-    //         const querySnapshot = await firebase.listAllBooks();
-    //         const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    //         setPosts(data);
-    //     };
-
-    //     fetchPosts();
-    // }, [firebase]);
-
   return (
     <HomePageSection>
     <section>
     <div className="home_page">
            { listings.length > 0 ?
             listings.map((listing) => (
+                // <ListCards key={listing.id} items={listing} />
                 <ListCards key={listing.id} items={listing} />
-                
             )):
             <div className="no-items">
                 <h2>No items in this Product</h2>

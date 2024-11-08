@@ -31,7 +31,7 @@ function Login() {
         try {
           await new Promise(resolve => setTimeout(resolve, 4000))
           setLoading(false);
-          await firebase.signupUserWithEmail(email, password);
+          await firebase.signupUserWithEmail(email, username, password);
           // await firebase.putData("users/" + "OLX", {email, password} )
         } catch (error) {
           console.error("Register failed:", error.message);

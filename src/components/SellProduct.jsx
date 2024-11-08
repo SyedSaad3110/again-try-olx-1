@@ -1,10 +1,24 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './SellProduct.css';
 import { categories } from '../Data';
 import { NavLink } from 'react-router-dom';
 
 
-function SellProduct() {
+function SellProduct({allcate, search}) {
+
+  
+  const [filteredCate , setFilteredCate] = useState(allcate);
+
+  useEffect(() => {
+   if (search) {
+     const filtered = allcate.filter(item =>
+       item.name.toLowerCase().includes(search.toLowerCase())
+     );
+     setFilteredCate(filtered);
+   } else {
+     setFilteredCate(allcate); // Reset to all categories when search is cleared
+   }
+ }, [search, allcate]);
     
   return (
     <>
@@ -19,7 +33,7 @@ function SellProduct() {
             </div>
             <div className="all">
             {
-                categories.map((items, value)=>{
+                filteredCate.map((items, value)=>{
            return  <div className="all-cate">
                   <div className="sell-images" key={value}>
                     <NavLink to={`/sellproducttype/${items.id}`}><img src={items.img} alt="" /></NavLink>

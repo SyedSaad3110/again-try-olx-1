@@ -1,11 +1,11 @@
-import React, { useContext, useRef, useState} from 'react'
+import React, { useContext, useEffect, useRef, useState} from 'react'
 import './SellProductType.css'
 import { NavLink } from 'react-router-dom';
 import { useFirebase } from './../Firebase/FirebaseContext';
 import Loader from '../Loader/Loader';
 
 
-function SellProductType({img , name}) {
+function SellProductType({img , name,}) {
   const firebase = useFirebase();
   // useState
   const [selectedImages, setSelectedImages] = useState([]);
@@ -65,7 +65,25 @@ function SellProductType({img , name}) {
         setLoading(false);
         setSendMsg("Success");
         
-  }
+  };
+
+  const handleTitleChange = (e) => {
+    const inputText = e.target.value;
+    if (inputText.length <= 20) {
+      setTitle(inputText); // Set description if within 32 characters
+    } else {
+      title(inputText.slice(0, 20)); // Limit to 32 characters if exceeded
+    }
+  };
+
+  const handleDescriptionChange = (e) => {
+    const inputText = e.target.value;
+    if (inputText.length <= 40) {
+      setDescription(inputText); // Set description if within 32 characters
+    } else {
+      setDescription(inputText.slice(0, 40)); // Limit to 32 characters if exceeded
+    }
+  };
 
   return (
     <>
@@ -170,9 +188,14 @@ function SellProductType({img , name}) {
                 <input 
                 onClick={searchBarActive} 
                 type="text" placeholder='Enter Title..'
-                onChange={(e)=> setTitle(e.target.value)}
+                onChange={handleTitleChange }
                 value={title}
                 />
+                <br />
+                <div className="pointer text-pointer">
+                <p>Title should contain at least 15 alphanumeric</p>
+                <p>0/70</p>
+                </div>
                 </div>
               </div>
 
@@ -182,9 +205,14 @@ function SellProductType({img , name}) {
                 <textarea 
                 onClick={searchBarActive} 
                 type="text" placeholder="Describe the item you're selling.."
-                onChange={(e)=> setDescription(e.target.value)}
+                onChange={handleDescriptionChange}
                 value={description}
                 />
+                <br />
+                <div className="pointer">
+                <p>Description should contain at least 40 alphanumeric</p>
+                <p>0/4096</p>
+                </div>
                 </div>
               </div>
 
@@ -210,7 +238,7 @@ function SellProductType({img , name}) {
                 <div className="fourth-content-bar search-bar" >
                 <input 
                 onClick={searchBarActive} 
-                type="text" placeholder='Enter Price...'
+                type="Number" placeholder='Enter Price...'
                 onChange={(e)=> setPrice(e.target.value)}
                 value={price}
                 />

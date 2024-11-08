@@ -1,14 +1,14 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import { Context } from '../Context'
 import Items from './Items';
 // import { allData } from '../AllData';
 
-function Cards({name , category}) {
-  const {all_cards} = useContext(Context)
+function Cards({name , category, toggleFavorite}) {
+  const {all_cards} = useContext(Context);
 
-  const cardsDisplay = all_cards.filter((items)=> items.cate === category)
+  const cardsDisplay = all_cards.filter((items)=> items.cate === category);
   return (
     <CardsSection>  
       <div className="card_section-container">
@@ -24,7 +24,7 @@ function Cards({name , category}) {
 
         <div className="cards_container">
          {cardsDisplay.map((items)=>{
-           return  <Items id={items.id} img={items.img} price={items.price} text={items.text} country={items.country} time={items.time} cate={items.cate}/>
+           return  <Items id={items.id} img={items.img} price={items.price} text={items.text} country={items.country} time={items.time} cate={items.cate} toggleFavorite={toggleFavorite}/>
           })}
         </div>
       </div>
@@ -97,16 +97,16 @@ const CardsSection = styled.section`
    display:flex;
    align-items:center;
    justify-content:space-between;
-   padding-top:20px;
+   /* padding-top:20px;
    padding-left:20px;
-   padding-right:20px;
+   padding-right:20px; */
 }
 .prices span {
     font-size:18px;
     font-weight:650;
 }
 .prices i {
-    font-size:24px;
+    /* font-size:24px; */
 }
 .text_container{
     display:flex;
@@ -140,6 +140,14 @@ const CardsSection = styled.section`
    padding-right:20px;
    padding-bottom:20px;
 }
+/* .prices i.active{
+ background-color: #01010f;
+} */
+/* .fa-heart.active{
+  background-color: black;
+  border-radius: 50%;
+} */
+/* =============================== */
 @media(max-width:1168px){
     .cards_container{
       display:flex;

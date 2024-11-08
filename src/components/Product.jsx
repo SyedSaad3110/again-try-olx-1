@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Context } from '../Context'
 import { NavLink, useParams } from 'react-router-dom';
 import './Product.css'
@@ -6,9 +6,22 @@ import './Product.css'
 function Product() {
     const {allData} = useContext(Context);
     const {productId} = useParams();
+// =================================================================================
+    const filteredProducts = allData.filter((items)=> items.cate === productId) ;
+// =================================================================================
+    const [isFavorite, setIsFavorite] = useState(false);
+    // console.log(isFavorite);
+    
 
-
-    const filteredProducts = allData.filter((items)=> items.cate === productId) 
+    // const handleToggleFavorite = () => {
+    //   setIsFavorite((prevState) => !prevState);
+    //   toggleFavorite({...items});
+    // };
+  
+    // useEffect(() => {
+    //   // Sync favorites with localStorage
+    //   localStorage.setItem('favorites', JSON.stringify(favorites));
+    // }, [favorites]);
     
 
   return (
@@ -41,6 +54,10 @@ function Product() {
                         <h4>{items.price}</h4>
                         <h6>{items.text}</h6>
                       </div>
+                      <i className={`fa-regular fa-heart ${isFavorite ? "fa-solid fa-heart" : ''}`}
+                    // onClick={() => handleToggleFavorite(items)}
+                    style={{ cursor: 'pointer' }}
+                    ></i>
                      </div>
                      <div className="sec-box">
                       <div className="contact">
