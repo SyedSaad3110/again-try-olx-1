@@ -6,16 +6,34 @@ import { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useFirebase } from './Firebase/FirebaseContext';
 
-
-
 function Navbar({searchCate, search, setSearch}) {
+
+    useEffect(() => {
+        // Function to handle clicks outside of the location dropdown
+        const handleClickOutside = (event) => {
+            if (locationRef.current && !locationRef.current.contains(event.target) && 
+                arrowRef.current && !arrowRef.current.contains(event.target)) {
+                locationRef.current.classList.remove("active");
+                arrowRef.current.classList.remove("active");
+            }
+        };
+    
+        // Attach the event listener to the document
+        document.addEventListener("click", handleClickOutside);
+    
+        // Cleanup function to remove the event listener on component unmount
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
+
     const firebase = useFirebase();
     // ==========================
       const locationRef = useRef();
       const arrowRef = useRef();
       const barRef = useRef();
 
-// ==============================================================
+// =====================================================
       const [handlerValue , setHandlerValue] = useState("");
 //  bar active
       const barActive = () => {
@@ -30,16 +48,11 @@ function Navbar({searchCate, search, setSearch}) {
         locationRef.current.classList.toggle("active")
         arrowRef.current.classList.toggle("active")
       };
-      const locationHandlerRemove = () => {
-        locationRef.current.classList.remove("active")
-      }
 //  handler change
         const handlerValueChange =(e)=>{
-             setHandlerValue(e)
+             setHandlerValue(e);
+             locationRef.current.classList.remove("active")
         };
-        
-        
-        
 // ====================================================
 
   return (

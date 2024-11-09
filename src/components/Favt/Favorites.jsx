@@ -1,14 +1,9 @@
-import React, { useContext } from 'react'
-// import { Context } from '../../Context'
-// import { NavLink } from 'react-router-dom'
-import './Favorites.css'
+import React from 'react'
+import './Favorites.css';
+import { NavLink } from 'react-router-dom';
 
 function Favorites({favorites,  toggleFavorite}) {
 
-    // const { favorites } = useContext(Context)
-    // const handleRemoveToFavorites = () => {
-    //        removeToFavorites({ id, img, country, price, text, time });
-    // };
   return (
     <>
      <section>
@@ -17,10 +12,12 @@ function Favorites({favorites,  toggleFavorite}) {
       <h1>Favorites Item's</h1>
       <div>
       <div className="cards_container">
-        {favorites.map((item) => (
-            <div className="box">
+        {favorites.map((item, value) => (
+            <div className="box" key={value}>
             <div className="images">
-             <img src={item.img} alt="" />
+             <NavLink to={`/display/${item.id}`}>
+             {<img src={item.img || item.imageURLs}  alt="" />}
+             </NavLink>
             <div className="prices">
               <span>{item.price}</span>
               <i className={`fa-regular fa-heart ${toggleFavorite ? "fa-solid fa-heart" : ''}`}
@@ -28,16 +25,15 @@ function Favorites({favorites,  toggleFavorite}) {
               style={{ cursor: 'pointer' }}
               ></i>
              </div>
-
              <div className="text_container">
               <div className="text">
-               {item.text}
+              {`${ item.text || item.description}`} 
               </div>
               <div className="country">
-              {item.country}
+              {item.country || item.location}
               </div>
               <div className="time">
-              {item.time}
+              {item.time || "10 sec ago"}
               </div>
              </div>   
             </div>

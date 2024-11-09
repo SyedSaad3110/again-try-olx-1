@@ -1,12 +1,7 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, {useState} from 'react'
 import { NavLink } from 'react-router-dom'
-// import styled from 'styled-components';
-import { ref } from 'firebase/storage';
-import { Context } from '../Context';
 
 function Items({id , img , country , price , text ,time, cate,toggleFavorite }) {
-   
-  // const [isFavorite, setIsFavorite] = useState(false);
   const [isFavorite, setIsFavorite] = useState();
 
   const handleToggleFavorite = () => {

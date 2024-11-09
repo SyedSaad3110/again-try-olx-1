@@ -42,8 +42,6 @@ export const FirebaseProvider = (props) => {
     const [ registerErr , setRegisterErr] = useState('');
     const [msg, setMsg] = useState('Post Now');
 
-    
-
     useEffect(()=>{
         onAuthStateChanged(firebaseAuth , (user) =>{
             if(user){
@@ -51,8 +49,6 @@ export const FirebaseProvider = (props) => {
             }else{
                 setUser(null);
             }
-            
-            
         })
     },[])
     // signup user
@@ -74,16 +70,6 @@ export const FirebaseProvider = (props) => {
         
     };
 
-    // const putData = (key, data) => {
-    //    try {
-    //     set(ref(database, key), data)
-    //     console.log("db success");
-        
-    //    } catch (error) {
-    //     console.log(`Error in db ${error}`)
-    //    }
-    // };
-    // login
     const loginWithEmailAndPassword = async(email , password) => {
         try {
             await signInWithEmailAndPassword(firebaseAuth , email , password)
@@ -94,12 +80,14 @@ export const FirebaseProvider = (props) => {
             setError(`Wrong Password`)
         }
     };
+
     // signin with google
     const siginWithGoogle = () => {
          signInWithPopup(firebaseAuth, googleProvider)
         .then(()=> alert(`Succeess`))
         .catch((err)=> alert(`Error Occured ${err.message}`))
     };
+
     // sigin with github
     const signinWithGithub = async () => {
         try{
@@ -143,7 +131,6 @@ export const FirebaseProvider = (props) => {
                 uploadedImageURLs.push(downloadURL); // Store the download URL
             }
     
-            // Now you can use uploadedImageURLs in your Firestore document
             await addDoc(collection(firestore, `OLX Data`), {
                 brand,
                 condition,

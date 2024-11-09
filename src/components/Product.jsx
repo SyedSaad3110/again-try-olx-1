@@ -3,26 +3,12 @@ import { Context } from '../Context'
 import { NavLink, useParams } from 'react-router-dom';
 import './Product.css'
 
-function Product() {
+function Product({toggleFavorite, favorites}) {
     const {allData} = useContext(Context);
     const {productId} = useParams();
-// =================================================================================
+// =========================================
     const filteredProducts = allData.filter((items)=> items.cate === productId) ;
-// =================================================================================
-    const [isFavorite, setIsFavorite] = useState(false);
-    // console.log(isFavorite);
-    
-
-    // const handleToggleFavorite = () => {
-    //   setIsFavorite((prevState) => !prevState);
-    //   toggleFavorite({...items});
-    // };
-  
-    // useEffect(() => {
-    //   // Sync favorites with localStorage
-    //   localStorage.setItem('favorites', JSON.stringify(favorites));
-    // }, [favorites]);
-    
+// =========================================
 
   return (
     <>
@@ -54,14 +40,18 @@ function Product() {
                         <h4>{items.price}</h4>
                         <h6>{items.text}</h6>
                       </div>
-                      <i className={`fa-regular fa-heart ${isFavorite ? "fa-solid fa-heart" : ''}`}
-                    // onClick={() => handleToggleFavorite(items)}
+                      <i
+                    className={`fa-heart ${favorites.some(fav => fav.id === items.id) ? "fa-solid" : "fa-regular"}`}
+                    onClick={() => toggleFavorite(items)}
                     style={{ cursor: 'pointer' }}
-                    ></i>
+                  ></i>
                      </div>
                      <div className="sec-box">
                       <div className="contact">
-                        <p>{items.country}<span>     {items.time}</span></p>
+                        <div className="time-country" style={{display:"flex", alignItems:'center', gap:'12px'}}>
+                        <p>{items.country}</p>
+                        <p>{items.time}</p>
+                        </div>
                         <div className="call-msg">
                           <div className="call-box">
                           <i class="fa-solid fa-phone"></i>
@@ -75,9 +65,6 @@ function Product() {
                       </div>
                      </div>
                       </div>
-                     {/* <div className="heart">
-                     <i class="fa-regular fa-heart"></i>
-                     </div> */}
                  </div>
               ))
             ):
@@ -86,7 +73,6 @@ function Product() {
         </div>
     </div>
     </section>
-   
     </>
   )
 }

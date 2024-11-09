@@ -1,25 +1,29 @@
 import React, {useState, useEffect} from 'react';
-// import { useFirebase } from './Firebase/FirebaseContext';
 import styled from 'styled-components';
 import ListCards from './ListCards';
 import { useFirebase } from './Firebase/FirebaseContext';
 
-function HomePage(props) {
+function HomePage({imageURLs,favorites, toggleFavorite}) {
     const [listings, setListings] = useState([]);
     const [url, setUrl] = useState(null);
-    const { listAllData } = useFirebase();
+    const { listAllData, getImgUrl } = useFirebase();
 
     useEffect(() => {
         const fetchListings = async () => {
             const data = await listAllData();
-            console.log("Fetched data:", data);
             setListings(data);
-            firebase.getImgUrl(props.imageURLs)
-            .then((url)=> setUrl(url))
+            if (imageURLs) {
+                try {
+                    const fetchedUrl = await getImgUrl(imageURLs);
+                    setUrl(fetchedUrl);
+                } catch (error) {
+                    console.error("Error fetching image URL:", error);
+                }
+            }
         };
 
         fetchListings();
-    }, [listAllData]);
+    }, [listAllData, getImgUrl,imageURLs]);
 
   return (
     <HomePageSection>
@@ -27,8 +31,7 @@ function HomePage(props) {
     <div className="home_page">
            { listings.length > 0 ?
             listings.map((listing) => (
-                // <ListCards key={listing.id} items={listing} />
-                <ListCards key={listing.id} items={listing} />
+                <ListCards key={listing.id} items={listing} favorites={favorites} toggleFavorite={toggleFavorite}/>
             )):
             <div className="no-items">
                 <h2>No items in this Product</h2>
@@ -36,7 +39,6 @@ function HomePage(props) {
             }
         </div>
     </section>
-
     </HomePageSection>
   )
 }

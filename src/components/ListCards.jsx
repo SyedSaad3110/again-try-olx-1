@@ -1,8 +1,7 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './ListingCards.css'
-
-function ListCards({items}) {
+function ListCards({items,favorites, toggleFavorite}) {
   return (
     <>
       <div className="card-container">
@@ -21,10 +20,18 @@ function ListCards({items}) {
                         <h4>{items.price}</h4>
                         <h6>{items.description}</h6>
                       </div>
+                      <i
+                    className={`fa-heart ${favorites.some(fav => fav.id === items.id) ? "fa-solid" : "fa-regular"}`}
+                    onClick={() => toggleFavorite(items)}
+                    style={{ cursor: 'pointer' }}
+                  ></i>
                      </div>
                      <div className="sec-box">
                       <div className="contact">
-                        <p>{items.location}<span>     {items.userName}</span></p>
+                      <div className="time-country" style={{display:"flex", alignItems:'center', gap:'12px'}}>
+                        <p>{items.location}</p>
+                        <p>{items.userName}</p>
+                        </div>
                         <div className="call-msg">
                           <div className="call-box">
                           <i class="fa-solid fa-phone"></i>

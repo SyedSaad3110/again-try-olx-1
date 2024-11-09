@@ -112,7 +112,7 @@ function App() {
           <>
           <Cards name="Mobiles" category="mobiles" toggleFavorite={toggleFavorite}/>
           <Cards name="Bikes" category="bikes" toggleFavorite={toggleFavorite} />
-          <Cards name="Watch"  category="watches" toggleFavorite={toggleFavorite} />
+          <Cards name="Watch"  category="watches" toggleFavorite={toggleFavorite}/>
           <Cards name="Cars" category="cars" toggleFavorite={toggleFavorite} />
           <Cards name="Fashion" category="fashion" toggleFavorite={toggleFavorite} />
           <Cards name="Animals" category="animals" toggleFavorite={toggleFavorite} />
@@ -123,7 +123,7 @@ function App() {
       },
       {
         path:"/product/:productId",
-        element:<Product/>
+        element:<Product toggleFavorite={toggleFavorite} favorites={favorites}/>
       },
       {
         path:"/display/:displayId",
@@ -131,7 +131,7 @@ function App() {
       },
       {
         path:"/viewmore/:productId",
-        element:<Product/>
+        element:<Product toggleFavorite={toggleFavorite} favorites={favorites}/>
       },
       {
         path:"/sell",
@@ -143,7 +143,7 @@ function App() {
       },
       {
         path:'/sellinglist',
-        element:<HomePage/>,
+        element:<HomePage toggleFavorite={toggleFavorite} favorites={favorites}/>,
       },
       {
         path:'/favorites',

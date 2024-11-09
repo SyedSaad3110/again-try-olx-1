@@ -34,8 +34,8 @@ function SellProduct({allcate, search}) {
             <div className="all">
             {
                 filteredCate.map((items, value)=>{
-           return  <div className="all-cate">
-                  <div className="sell-images" key={value}>
+           return  <div className="all-cate" key={value}>
+                  <div className="sell-images" >
                     <NavLink to={`/sellproducttype/${items.id}`}><img src={items.img} alt="" /></NavLink>
                     <NavLink to={`/sellproducttype/${items.id}`} style={{textDecoration:'none' , color:'black', fontWeight:'400'}}><h6>{items.name}</h6></NavLink>
                   </div>

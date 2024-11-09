@@ -17,14 +17,14 @@ function Cards({name , category, toggleFavorite}) {
             <h2>{name}</h2>
             </div>
             <div className="left">
-               <NavLink className='a_tag' to={`/viewmore/${category}`}>View More</NavLink>
+               <NavLink className='a_tag' to={`/viewmore/${category}`}><a>View More</a></NavLink>
                <i class="fa-solid fa-angle-right"></i>
         </div>
         </div>
 
         <div className="cards_container">
-         {cardsDisplay.map((items)=>{
-           return  <Items id={items.id} img={items.img} price={items.price} text={items.text} country={items.country} time={items.time} cate={items.cate} toggleFavorite={toggleFavorite}/>
+         {cardsDisplay.map((items, value)=>{
+           return  <Items key={value} id={items.id} img={items.img} price={items.price} text={items.text} country={items.country} time={items.time} cate={items.cate} toggleFavorite={toggleFavorite}/>
           })}
         </div>
       </div>
@@ -44,7 +44,7 @@ const CardsSection = styled.section`
 }
 .ri h2{
     font-size:29px;
-    font-weight:700;
+    font-weight:600;
     letter-spacing: 0.8px;
 }
 .left{
@@ -67,10 +67,8 @@ const CardsSection = styled.section`
     color:blue;
 }
 .cards_container{
-  /* overflow-x: auto; */
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
   gap:1.2rem;
   padding:20px 0;
   width:100%;
@@ -90,27 +88,17 @@ const CardsSection = styled.section`
     height:210px;
     object-fit: cover;
 }
-/* .content_container{
-    padding:20px;
-} */
 .prices{
    display:flex;
    align-items:center;
    justify-content:space-between;
-   /* padding-top:20px;
-   padding-left:20px;
-   padding-right:20px; */
 }
 .prices span {
     font-size:18px;
     font-weight:650;
 }
-.prices i {
-    /* font-size:24px; */
-}
 .text_container{
     display:flex;
-    /* align-items:center; */
     justify-content: space-evenly;
     flex-direction:column;
     text-align:start;
@@ -140,13 +128,6 @@ const CardsSection = styled.section`
    padding-right:20px;
    padding-bottom:20px;
 }
-/* .prices i.active{
- background-color: #01010f;
-} */
-/* .fa-heart.active{
-  background-color: black;
-  border-radius: 50%;
-} */
 /* =============================== */
 @media(max-width:1168px){
     .cards_container{
@@ -210,11 +191,35 @@ const CardsSection = styled.section`
     width:215px;
     height:270px
    }
+   .ri h2{
+    font-size:24px;
+    font-weight:570;
+    letter-spacing: 0.5px;
+    margin-top: 6px;
+  }
+  .left{
+    display:flex;
+    align-items: center;
+    gap:10px;
+  }
+.left a{
+    font-size:16px;
+    font-weight:470;
+    margin-top: 4px;
+  }
+.left i {
+    font-size:16px;
+  }
 }
 @media(max-width:390px){
    .cards_container .box{
     width:200px;
     height:275px
    }
+   .ri h2{
+    font-size:22px;
+    font-weight:560;
+    letter-spacing: 0.4px;
+}
 }
 `
