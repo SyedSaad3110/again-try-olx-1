@@ -7,6 +7,7 @@ function HomePage({imageURLs,favorites, toggleFavorite}) {
     const [listings, setListings] = useState([]);
     const [url, setUrl] = useState(null);
     const { listAllData, getImgUrl } = useFirebase();
+    
 
     useEffect(() => {
         const fetchListings = async () => {

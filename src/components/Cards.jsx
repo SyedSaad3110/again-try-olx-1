@@ -109,10 +109,11 @@ const CardsSection = styled.section`
     text-align:start;
     font-size:18px;
     font-weight:420;
-    margin-top:12px;
+    margin-top:5px;
    padding-left:20px;
    padding-right:20px;
    max-width:270px;
+   line-height: 1.3;
 
 }
 .text_container .country{

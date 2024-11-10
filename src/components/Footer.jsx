@@ -24,7 +24,8 @@ function Footer() {
    <ImageSection>
     <section>
     <div className="image">
-    <img src="https://s2.adform.net/Banners/65512640/65512640.jpg?bv=3" alt="" />
+      <img src="https://tpc.googlesyndication.com/simgad/17545347369237581" alt="" />
+    {/* <img src="https://s2.adform.net/Banners/65512640/65512640.jpg?bv=3" alt="" /> */}
    </div>
     </section>
     <div className="last_container">

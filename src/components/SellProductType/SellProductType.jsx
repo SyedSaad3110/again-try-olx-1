@@ -14,7 +14,9 @@ function SellProductType({img , name,}) {
   const [brand, setBrand] = useState("");
   const [condition, setCondition] = useState("");
   const [title, setTitle] = useState("");
+  const [charTitleCount, setCharTitleCount] = useState(0)
   const [description, setDescription] = useState("");
+  const [charCount, setCharCount] = useState(0);
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState("");
   const [nametext, setNameText] = useState("");
@@ -24,7 +26,12 @@ function SellProductType({img , name,}) {
   const searchRef = useRef();
   const fileInputRef = useRef(null);
 
-
+  const handlePriceChange = (e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    // Format the number with commas
+    const formattedValue = Number(value).toLocaleString();
+    setPrice(formattedValue);
+};
 
   const searchBarActive = () => {
     searchRef.current.classList.toggle('active')
@@ -70,16 +77,18 @@ function SellProductType({img , name,}) {
   const handleTitleChange = (e) => {
     const inputText = e.target.value;
     if (inputText.length <= 20) {
-      setTitle(inputText); // Set description if within 32 characters
+      setTitle(inputText);
+      setCharTitleCount(inputText.length) // Set description if within 32 characters
     } else {
-      title(inputText.slice(0, 20)); // Limit to 32 characters if exceeded
+      setTitle(inputText.slice(0, 20)); // Limit to 32 characters if exceeded
     }
   };
 
   const handleDescriptionChange = (e) => {
     const inputText = e.target.value;
     if (inputText.length <= 40) {
-      setDescription(inputText); // Set description if within 32 characters
+      setDescription(inputText);
+      setCharCount(inputText.length); // Set description if within 32 characters
     } else {
       setDescription(inputText.slice(0, 40)); // Limit to 32 characters if exceeded
     }
@@ -194,7 +203,7 @@ function SellProductType({img , name,}) {
                 <br />
                 <div className="pointer text-pointer">
                 <p>Title should contain at least 15 alphanumeric</p>
-                <p>0/70</p>
+                <p>{charTitleCount}/20</p>
                 </div>
                 </div>
               </div>
@@ -211,7 +220,7 @@ function SellProductType({img , name,}) {
                 <br />
                 <div className="pointer">
                 <p>Description should contain at least 40 alphanumeric</p>
-                <p>0/4096</p>
+                <p>{charCount}/40</p>
                 </div>
                 </div>
               </div>
@@ -238,8 +247,8 @@ function SellProductType({img , name,}) {
                 <div className="fourth-content-bar search-bar" >
                 <input 
                 onClick={searchBarActive} 
-                type="Number" placeholder='Enter Price...'
-                onChange={(e)=> setPrice(e.target.value)}
+                type="text" placeholder='Enter Price...'
+                onChange={handlePriceChange}
                 value={price}
                 />
                 </div>
@@ -265,7 +274,7 @@ function SellProductType({img , name,}) {
                 <div className="fourth-content-bar search-bar" >
                 <input 
                 onClick={searchBarActive} 
-                type="text" 
+                type="number" 
                 placeholder='Enter Mobile Number...'
                 onChange={(e)=> setMobileNumber(e.target.value)}
                 value={mobileNumber}

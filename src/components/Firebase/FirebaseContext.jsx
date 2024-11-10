@@ -108,12 +108,8 @@ export const FirebaseProvider = (props) => {
     }
 }
     // isloggedin
-    const isLoggedIn = user ? true : false
+    const isLoggedIn = user ? true : false;
 
-    // listing componets
-    console.log(user);
-    
-    
     // sigout
     const logout = () => {
         return signOut(firebaseAuth);
@@ -155,7 +151,6 @@ export const FirebaseProvider = (props) => {
     };
 
     // List all data in website
-
     const listAllData = async () => {
         try {
             const querySnapshot = await getDocs(collection(firestore, "OLX Data"));
@@ -166,14 +161,10 @@ export const FirebaseProvider = (props) => {
         }
     };
 
-//     const listAllData = () => {
-//         return getDocs(collection(firestore, "OLX Data"))
-//  };
-
     const getImgUrl = (path) => {
         try {
             const imgSnapShop = getDownloadURL(ref(storage, path));
-            console.log(imgSnapShop)
+            // console.log(imgSnapShop)
             return imgSnapShop
         } catch (error) {
             console.log(`Img error ${error}`)

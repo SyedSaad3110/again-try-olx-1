@@ -12,6 +12,7 @@ function CarouselPage() {
       <Carousel.Item>
         <img
           className="d-block w-100"
+          // src="https://images.olx.com.pk/thumbnails/499918507-800x600.webp"
           src="https://images.olx.com.pk/thumbnails/437508562-800x600.webp"
           alt="First slide"
         />
@@ -19,6 +20,7 @@ function CarouselPage() {
       <Carousel.Item>
         <img
           className="d-block w-100"
+          // src="https://images.olx.com.pk/thumbnails/499918507-800x600.webp"
           src="https://images.olx.com.pk/thumbnails/437508562-800x600.webp"
           alt="Second slide"
         />
